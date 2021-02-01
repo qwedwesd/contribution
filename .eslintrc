@@ -1,0 +1,5 @@
+//規範要用什麼 風格要用什麼
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb-base" //Google Airbnb JavaScript Standard Style
+}
