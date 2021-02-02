@@ -7,6 +7,8 @@ const router = Router();
 // router.get('/', UserController.getUser);
 
 router.get('/', UserController.getAllUser);
+router.post('/register', UserController.registerUser);
+router.post('/login', UserController.loginUser);
 /*
 // /api/user/123
 router.get('/:id', (req, res) => {
