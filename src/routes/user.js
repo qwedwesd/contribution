@@ -9,6 +9,7 @@ const router = Router();
 router.get('/', UserController.getAllUser);
 router.post('/register', UserController.registerUser);
 router.post('/login', UserController.loginUser);
+// router.post('/update',UserController.updateUser);
 /*
 // /api/user/123
 router.get('/:id', (req, res) => {

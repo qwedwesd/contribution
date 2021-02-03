@@ -1,28 +1,28 @@
 export default (sequelize, DataTypes) => {
-  const users = sequelize.define('users', {
-    id: {
+  const profile = sequelize.define('profile', {
+    userId: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    email: {
+    name: {
       type: DataTypes.STRING,
     },
-    password: {
+    phone: {
       type: DataTypes.STRING,
     },
   }, {
     sequelize,
-    modelName: 'users',
+    modelName: 'profile',
     freezeTableName: true,
   });
-  users.associate = (models) => {
-    const { profile } = models;
-    users.hasOne(profile, {
-      foreignKey: 'userId',
-      targetKey: 'id',
+  profile.associate = (models) => {
+    const { users } = models;
+    profile.hasOne(users, {
+      foreignKey: 'id',
+      targetKey: 'userId',
     });
   };
-  return users;
+  return profile;
 };
