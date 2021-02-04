@@ -5,6 +5,15 @@ const { users } = model;
 const { profile } = model;
 
 class UserService {
+  getUser = async (id) => {
+    const user = await users.findAll({
+      where: {
+        id,
+      },
+    });
+    return user;
+  }
+
   getAllUser = async () => {
     const user = await users.findAll();
     return user;
@@ -48,6 +57,22 @@ class UserService {
   compareHash = (plain, compare) => {
     const response = bcrypt.compareSync(plain, compare);
     return response;
+  }
+
+  updateprofile = async (id, param) => {
+    const {
+      name,
+      phone,
+    } = param;
+    const profiles = await profile.update({
+      name,
+      phone,
+    }, {
+      where: {
+        userId: id,
+      },
+    });
+    return profiles;
   }
 }
 export default new UserService();

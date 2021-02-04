@@ -2,8 +2,9 @@ import UserService from '../services/user';
 
 class UserController {
    getUser = async (req, res) => {
-     const { token } = req.query;
-     res.status(200).json({ token, message: 's' });
+     const { id } = req.params;
+     const user = await UserService.getUser(id);
+     res.status(200).json({ user });
    };
 
     getAllUser = async (req, res) => {
@@ -40,6 +41,17 @@ class UserController {
         return;
       }
       res.status(200).json({ message: '登入成功' });
+    }
+
+    updateprofile = async (req, res) => {
+      const { body } = req;
+      const { id } = req.params;
+      const profiles = await UserService.updateprofile(id, body);
+      if (!profiles) {
+        res.status(400).json({ message: '輸入的內容有誤' });
+        return;
+      }
+      res.status(200).json({ message: '修改成功' });
     }
 }
 export default new UserController();

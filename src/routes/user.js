@@ -4,11 +4,13 @@ import UserController from '../controllers/userController';
 const router = Router();
 
 // /api/user?token=123
-// router.get('/', UserController.getUser);
+router.get('/:id', UserController.getUser);
 
 router.get('/', UserController.getAllUser);
 router.post('/register', UserController.registerUser);
 router.post('/login', UserController.loginUser);
+router.put('/update/:id', UserController.updateprofile);
+
 // router.post('/update',UserController.updateUser);
 /*
 // /api/user/123
