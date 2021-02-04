@@ -53,5 +53,16 @@ class UserController {
       }
       res.status(200).json({ message: '修改成功' });
     }
+
+    changepassword = async (req, res) => {
+      const { body } = req;
+      const { id } = req.params;
+      const user = await UserService.changepassword(id, body);
+      if (!user) {
+        res.status(400).json({ message: '輸入的內容有誤' });
+        return;
+      }
+      res.status(200).json({ message: '修改成功' });
+    }
 }
 export default new UserController();

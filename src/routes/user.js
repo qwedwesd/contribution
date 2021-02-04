@@ -9,7 +9,8 @@ router.get('/:id', UserController.getUser);
 router.get('/', UserController.getAllUser);
 router.post('/register', UserController.registerUser);
 router.post('/login', UserController.loginUser);
-router.put('/update/:id', UserController.updateprofile);
+router.put('/updateprofile/:id', UserController.updateprofile);
+router.put('/changepassword/:id', UserController.changepassword);
 
 // router.post('/update',UserController.updateUser);
 /*

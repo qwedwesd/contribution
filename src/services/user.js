@@ -64,15 +64,37 @@ class UserService {
       name,
       phone,
     } = param;
-    const profiles = await profile.update({
-      name,
-      phone,
-    }, {
-      where: {
-        userId: id,
-      },
-    });
-    return profiles;
+    try {
+      const profiles = await profile.update({
+        name,
+        phone,
+      }, {
+        where: {
+          userId: id,
+        },
+      });
+      return profiles;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  changepassword = async (id, param) => {
+    const {
+      password,
+    } = param;
+    try {
+      const user = await users.update({
+        password: bcrypt.hashSync(password, 10),
+      }, {
+        where: {
+          id,
+        },
+      });
+      return user;
+    } catch (error) {
+      return false;
+    }
   }
 }
 export default new UserService();
