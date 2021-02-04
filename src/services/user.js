@@ -2,6 +2,8 @@ import bcrypt from 'bcrypt';
 import model from '../models/index';
 
 const { users } = model;
+const { profile } = model;
+
 class UserService {
   getAllUser = async () => {
     const user = await users.findAll();
@@ -29,12 +31,15 @@ class UserService {
     } = param;
     try {
       const user = users.create({
-        name,
         email,
         password: bcrypt.hashSync(password, 10),
-        phone,
-      });
+        profile: [{
+          name,
+          phone,
+        }],
+      }, { include: [profile] });
       return user;
+      // return user;
     } catch (error) {
       return false;
     }

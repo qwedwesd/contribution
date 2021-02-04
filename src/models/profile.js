@@ -1,9 +1,11 @@
 export default (sequelize, DataTypes) => {
   const profile = sequelize.define('profile', {
     userId: {
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
+      references: {
+        model: 'users',
+        foreignKey: 'id',
+      },
       type: DataTypes.INTEGER,
     },
     name: {
@@ -19,10 +21,7 @@ export default (sequelize, DataTypes) => {
   });
   profile.associate = (models) => {
     const { users } = models;
-    profile.hasOne(users, {
-      foreignKey: 'id',
-      targetKey: 'userId',
-    });
+    profile.belongsTo(users);
   };
   return profile;
 };
