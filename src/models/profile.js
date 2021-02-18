@@ -6,7 +6,7 @@ export default (sequelize, DataTypes) => {
         model: 'users',
         foreignKey: 'id',
       },
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUIDV4,
     },
     name: {
       type: DataTypes.STRING,

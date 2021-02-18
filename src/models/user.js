@@ -2,9 +2,9 @@ export default (sequelize, DataTypes) => {
   const users = sequelize.define('users', {
     id: {
       allowNull: false,
-      autoIncrement: true,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
     },
     email: {
       type: DataTypes.STRING,

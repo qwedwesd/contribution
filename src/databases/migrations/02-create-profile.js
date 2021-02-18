@@ -6,7 +6,7 @@ export async function up(queryInterface, Sequelize) {
         model: 'users',
         foreignKey: 'id',
       },
-      type: Sequelize.INTEGER,
+      type: Sequelize.UUID,
     },
     name: {
       type: Sequelize.STRING,
