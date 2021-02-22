@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import mailgun from 'mailgun-js';
 import model from '../models/index';
 
 const { users } = model;
@@ -95,6 +96,20 @@ class UserService {
     } catch (error) {
       return false;
     }
+  }
+
+  sendmail=() => {
+    const DOMAIN = 'sandbox704a854ec40948bea2db60705ad709a9.mailgun.org';
+    const mg = mailgun({ apiKey: '935d532fc835a8096e2445abd437a6f5-4de08e90-528f3665', domain: DOMAIN });
+    const data = {
+      from: 's1810931016@gms.nutc.edu.tw',
+      to: 's1810931016@gms.nutc.edu.tw',
+      subject: 'Hello',
+      text: 'Testing some Mailgun awesomness!',
+    };
+    mg.messages().send(data, (error, body) => {
+      console.log(body);
+    });
   }
 }
 export default new UserService();

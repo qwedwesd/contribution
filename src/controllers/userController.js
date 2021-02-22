@@ -64,5 +64,10 @@ class UserController {
       }
       res.status(200).json({ message: '修改成功' });
     }
+
+    sendmail = async (req, res) => {
+      await UserService.sendmail();
+      res.status(200).json({ message: '發送成功' });
+    }
 }
 export default new UserController();

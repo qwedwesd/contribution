@@ -11,6 +11,8 @@ router.post('/register', UserController.registerUser);
 router.post('/login', UserController.loginUser);
 router.put('/updateprofile/:id', UserController.updateprofile);
 router.put('/changepassword/:id', UserController.changepassword);
+router.post('/sendmail', UserController.sendmail);
+//put 全部修改 patch 修改部分
 
 // router.post('/update',UserController.updateUser);
 /*
