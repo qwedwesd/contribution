@@ -9,8 +9,8 @@ router.get('/:id', UserController.getUser);
 router.get('/', UserController.getAllUser);
 router.post('/register', UserController.registerUser);
 router.post('/login', UserController.loginUser);
-router.put('/updateprofile/:id', UserController.updateprofile);
-router.put('/changepassword/:id', UserController.changepassword);
+router.patch('/updateprofile/:id', UserController.updateprofile);
+router.patch('/changepassword/:id', UserController.changepassword);
 router.post('/sendmail', UserController.sendmail);
 // put 全部修改 patch 修改部分
 
