@@ -1,24 +1,24 @@
 export default (sequelize, DataTypes) => {
-  const subjects = sequelize.define('subjects', {
+  const keywords = sequelize.define('keywords', {
     id: {
       primaryKey: true,
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
     },
-    theme: {
+    keyword: {
       type: DataTypes.STRING,
     },
   }, {
     sequelize,
-    modelName: 'subjects',
+    modelName: 'keywords',
     freezeTableName: true,
   });
-  subjects.associate = (models) => {
+  keywords.associate = (models) => {
     const { papers } = models;
-    subjects.hasMany(papers, {
-      foreignKey: 'themeId',
-      targetKey: 'id',
+    keywords.belongsToMany(papers, {
+      foreignKey: 'keywordId',
+      through: 'paper_keyword',
     });
   };
-  return subjects;
+  return keywords;
 };

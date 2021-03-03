@@ -1,13 +1,13 @@
 export default (sequelize, DataTypes) => {
   const users = sequelize.define('users', {
     id: {
-      allowNull: false,
-      defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
     },
     password: {
       type: DataTypes.STRING,

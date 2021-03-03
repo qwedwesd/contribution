@@ -2,8 +2,7 @@ export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('subjects', {
     id: {
       primaryKey: true,
-      autoIncrement: true,
-      type: Sequelize.INTEGER,
+      type: Sequelize.UUID,
     },
     theme: {
       type: Sequelize.STRING,

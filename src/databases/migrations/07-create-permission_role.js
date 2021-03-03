@@ -1,21 +1,22 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('profile', {
+  await queryInterface.createTable('permission_role', {
     id: {
       primaryKey: true,
       type: Sequelize.UUID,
     },
-    userId: {
+    roleId: {
       type: Sequelize.UUID,
       references: {
-        model: 'users',
-        foreignKey: 'id',
+        model: 'roles',
+        key: 'id',
       },
     },
-    name: {
-      type: Sequelize.STRING,
-    },
-    phone: {
-      type: Sequelize.STRING,
+    permissionId: {
+      type: Sequelize.UUID,
+      references: {
+        model: 'permissions',
+        key: 'id',
+      },
     },
     createdAt: {
       allowNull: false,
@@ -28,5 +29,5 @@ export async function up(queryInterface, Sequelize) {
   });
 }
 export async function down(queryInterface) {
-  await queryInterface.dropTable('profile');
+  await queryInterface.dropTable('permission_role');
 }

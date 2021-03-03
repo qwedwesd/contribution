@@ -1,20 +1,29 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('profile', {
+  await queryInterface.createTable('papers', {
     id: {
       primaryKey: true,
       type: Sequelize.UUID,
     },
-    userId: {
+    themeId: {
       type: Sequelize.UUID,
       references: {
-        model: 'users',
+        model: 'subjects',
         foreignKey: 'id',
       },
     },
-    name: {
+    title: {
       type: Sequelize.STRING,
     },
-    phone: {
+    abstract: {
+      type: Sequelize.STRING,
+    },
+    content: {
+      type: Sequelize.STRING,
+    },
+    author: {
+      type: Sequelize.STRING,
+    },
+    organization: {
       type: Sequelize.STRING,
     },
     createdAt: {
@@ -28,5 +37,5 @@ export async function up(queryInterface, Sequelize) {
   });
 }
 export async function down(queryInterface) {
-  await queryInterface.dropTable('profile');
+  await queryInterface.dropTable('papers');
 }

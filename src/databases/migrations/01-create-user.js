@@ -1,7 +1,6 @@
 export async function up(queryInterface, Sequelize) {
   await queryInterface.createTable('users', {
     id: {
-      allowNull: false,
       primaryKey: true,
       type: Sequelize.UUID,
     },

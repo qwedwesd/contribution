@@ -1,21 +1,22 @@
 export async function up(queryInterface, Sequelize) {
-  await queryInterface.createTable('profile', {
+  await queryInterface.createTable('paper_keyword', {
     id: {
       primaryKey: true,
       type: Sequelize.UUID,
     },
-    userId: {
+    keywordId: {
       type: Sequelize.UUID,
       references: {
-        model: 'users',
-        foreignKey: 'id',
+        model: 'keywords',
+        key: 'id',
       },
     },
-    name: {
-      type: Sequelize.STRING,
-    },
-    phone: {
-      type: Sequelize.STRING,
+    paperId: {
+      type: Sequelize.UUID,
+      references: {
+        model: 'papers',
+        key: 'id',
+      },
     },
     createdAt: {
       allowNull: false,
@@ -28,5 +29,5 @@ export async function up(queryInterface, Sequelize) {
   });
 }
 export async function down(queryInterface) {
-  await queryInterface.dropTable('profile');
+  await queryInterface.dropTable('paper_keyword');
 }
